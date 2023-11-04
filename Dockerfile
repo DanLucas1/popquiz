@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
 RUN pip install jupyter
 RUN pip install openai
 RUN pip install scikit-llm
+RUN pip install nblint
+RUN pip install matplotlib
+RUN pip install seaborn
 
 # Set up the working directory
 WORKDIR /workspace
@@ -19,5 +22,4 @@ RUN mkdir /.local /.jupyter
 RUN chmod -R 777 /.local /.jupyter /workspace
 
 # When the container launches, start a Jupyter Notebook server
-CMD ["jupyter", "notebook", "--ip='*'", "--port=8888", "--no-browser"]
-
+CMD ["jupyter", "lab", "--ip='*'", "--port=8888", "--no-browser"]
